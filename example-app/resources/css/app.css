@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body {
+    background-color: 383333;
+}
+
+.menu-box {
+    background-color: #FF8228;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 19px;
+}
+
+.list {
+    background-color: #FFFFFF;
+    margin: 10px 0 10px 0;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #DCDCDC;
+}
+
+.menu-box .weight,
+.menu-box .rep {
+    text-align: center;
+}
