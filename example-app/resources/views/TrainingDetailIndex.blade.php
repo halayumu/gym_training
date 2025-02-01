@@ -13,7 +13,9 @@
                 回数
             </div>
             <div class="rep">
-                {{ $rep }}回数
+                {{ $rep }}回
             </div>
+            <button type="submit">登録</button>
+            <a href="{{ url('/TrainingInput') }}" class="btn">戻る</a>
         </div>
     </div>
