@@ -10,12 +10,24 @@ class TrainingDetailController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    /**
+     * フォームの入力情報を取得する
+     */
+    public function index(Request $request)
     {
-        //
-        $weight = 100;
-        $rep = 10;
-        return view('TrainingDetailIndex', compact('weight', 'rep'));
+        $weight = $request->input('weight') ?? "";
+        $rep = $request->input('rep') ?? "";
+
+
+        if (!empty($weight) && !empty($rep)) {
+            session(['weight' => $weight, 'rep' => $rep]);
+            $weight = session('weight');
+            $rep = session('rep');
+
+            return view('TrainingDetailIndex', compact('weight', 'rep'));
+        } else {
+            return view('TrainingDetail');
+        }
     }
 
     /**
