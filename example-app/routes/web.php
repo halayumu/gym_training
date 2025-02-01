@@ -7,4 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/TrainingDetail', [TrainingDetailController::class, 'index']);
+Route::get('/TrainingInput', [TrainingDetailController::class, 'index']); //入力画面
+Route::post('/TrainingDetail', [TrainingDetailController::class, 'index']);//詳細画面
