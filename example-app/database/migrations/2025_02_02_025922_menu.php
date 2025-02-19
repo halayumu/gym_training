@@ -14,8 +14,15 @@ return new class extends Migration
         Schema::create('menu', function (Blueprint $table) {
             $table->id();
             $table->string('part', 10);
-            //種目名から作成する
+            $table->string('trainingExerciseName', 20);
+            $table->string('set', 10);
+            $table->string('rep', 10);
+            $table->string('weight', 10);
+            $table->integer('chairHeight')->nullable(true);
+            $table->string('supportHeight', 100)->nullable(true);
+            $table->string('memo', 255)->nullable(true);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
         });
     }
 
