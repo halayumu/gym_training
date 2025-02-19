@@ -30,12 +30,16 @@ class TrainingDetailController extends Controller
         }
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * トレーニングメニューを追加
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $trainingDetail = new TrainingDetail();
+        $trainingDetail->addTrainingMenu($request->weight, $request->rep);
+
+        return view('TrainingDetail');
     }
 
     /**
