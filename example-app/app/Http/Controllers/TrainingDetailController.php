@@ -30,13 +30,6 @@ class TrainingDetailController extends Controller
         }
     }
 
-    /**
-     * ホーム画面
-     */
-    public function home()
-    {
-        return view('Home');
-    }
 
     /**
      * トレーニングメニューを追加
