@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 Route::get('/TrainingInput', [TrainingDetailController::class, 'index']); //入力画面
 Route::post('/TrainingDetail', [TrainingDetailController::class, 'index']); //詳細画面
-Route::post('/TrainingMenuAdd', [TrainingDetailController::class, 'create']);//トレーニングメニュー登録
+Route::post('/TrainingMenuAdd', [TrainingDetailController::class, 'create']); //トレーニングメニュー登録
+Route::get('/Home', [TrainingDetailController::class, 'Home']);//ホーム画面
