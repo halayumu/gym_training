@@ -50,6 +50,19 @@ class TrainingDetailController extends Controller
     }
 
     /**
+     * メニュー検索
+     */
+    public function searchMenu(Request $request)
+    {
+        $eventName = $request->input('eventName');
+
+        // $trainingDetail = new TrainingDetail();
+        // $trainingDetail->searchMenu($eventName);
+
+        return response()->json(['eventNameJson' => $eventName]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
