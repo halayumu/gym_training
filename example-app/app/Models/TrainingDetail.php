@@ -45,4 +45,33 @@ class TrainingDetail extends Model
             'user_id' => $userId,
         ]);
     }
+
+
+    /**
+     * トレーニングメニューの検索
+     * 
+     * ①タップしたメニュータブからメニュー名をjson形式で取得
+     * ②メニューテーブルからメニュー名を検索
+     * 
+     * @param $weight 重量
+     * @param $rep 回数
+     */
+    public function searchMenu($eventName)
+    {
+        $userId = 1; //テストデータ
+        $part = $eventName;
+
+        if ($part == 'all') {
+            $menu = DB::table('new_menu')
+                ->where('user_id', $userId)
+                ->get();
+        } else {
+            $menu = DB::table('new_menu')
+                ->where('user_id', $userId)
+                ->where('part', $part)
+                ->get();
+        }
+
+        return $menu;
+    }
 }
