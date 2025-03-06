@@ -56,10 +56,10 @@ class TrainingDetailController extends Controller
     {
         $eventName = $request->input('eventName');
 
-        // $trainingDetail = new TrainingDetail();
-        // $trainingDetail->searchMenu($eventName);
+        $trainingDetail = new TrainingDetail();
+        $menuGet = $trainingDetail->searchMenu($eventName);
 
-        return response()->json(['eventNameJson' => $eventName]);
+        return response()->json(['eventNameJson' => $menuGet]);
     }
 
     /**
