@@ -59,7 +59,7 @@ class TrainingDetailController extends Controller
         $trainingDetail = new TrainingDetail();
         $menuGet = $trainingDetail->searchMenu($eventName);
 
-        return response()->json(['eventNameJson' => $menuGet]);
+        return response()->json(['eventNameJson' => $menuGet], 200, [], JSON_UNESCAPED_UNICODE);
     }
 
     /**
