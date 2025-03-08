@@ -48,8 +48,21 @@ function searchMenu(TrainingEventName) {
         .then(response => response.json())
         .then(data => {
             console.log('Success:', data);
+            displayMenu(data);
         })
         .catch((error) => {
             console.error('Error:', error);
         });
+}
+
+// jsonデータをliとして表示させる //
+function displayMenu(menu) {
+    const menuList = document.getElementById('tore_menu');
+    menuList.innerHTML = ''; // 既存のリストをクリア
+
+    menu.eventNameJson.forEach(item => {
+        const newlistTag = document.createElement('li');
+        newlistTag.textContent = item.trainingExerciseName;
+        menuList.appendChild(newlistTag);
+    });
 }

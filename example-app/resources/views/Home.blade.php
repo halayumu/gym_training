@@ -23,6 +23,11 @@
             <input type="radio" class="" id="leg" checked>
             <label for="leg">脚</label>
         </div>
+
+        <div class="list_box">
+            <ul id="tore_menu">
+            </ul>
+        </div>
     </div>
 
     @vite('resources/js/home.js')
