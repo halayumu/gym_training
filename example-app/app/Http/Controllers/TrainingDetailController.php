@@ -38,6 +38,19 @@ class TrainingDetailController extends Controller
         return view('Home');
     }
 
+
+    /**
+     * ホーム画面用のファーストメニューを表示させる
+     */
+    public function firstMenu(Request $request)
+    {
+        $user_id = $request->input('user_id');
+        $trainingDetail = new TrainingDetail();
+        $menuGet = $trainingDetail->getAllMenu($user_id);
+
+        return response()->json(['eventNameJson' => $menuGet], 200, [], JSON_UNESCAPED_UNICODE);
+    }
+
     /**
      * トレーニングメニューを追加
      */
@@ -60,45 +73,5 @@ class TrainingDetailController extends Controller
         $menuGet = $trainingDetail->searchMenu($eventName);
 
         return response()->json(['eventNameJson' => $menuGet], 200, [], JSON_UNESCAPED_UNICODE);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(TrainingDetail $trainingDetail)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TrainingDetail $trainingDetail)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, TrainingDetail $trainingDetail)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TrainingDetail $trainingDetail)
-    {
-        //
     }
 }
