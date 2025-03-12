@@ -46,6 +46,25 @@ class TrainingDetail extends Model
         ]);
     }
 
+    /**
+     * メニューの初期表示
+     * 
+     * ①
+     * ②
+     * 
+     * @param $weight 重量
+     * @param $rep 回数
+     */
+    public function firstMenu()
+    {
+        $userId = 1; //テストデータ
+
+        $menu = DB::table('new_menu')
+            ->where('user_id', $userId)
+            ->get();
+
+        return $menu;
+    }
 
     /**
      * トレーニングメニューの検索
@@ -71,6 +90,18 @@ class TrainingDetail extends Model
                 ->where('part', $part)
                 ->get();
         }
+
+        return $menu;
+    }
+
+    /**
+     * トレーニングメニューを全件取得する
+     */
+    public function getAllMenu($userId)
+    {
+        $menu = DB::table('new_menu')
+            ->where('user_id', $userId)
+            ->get();
 
         return $menu;
     }
