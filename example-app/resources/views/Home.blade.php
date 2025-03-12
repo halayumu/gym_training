@@ -27,6 +27,7 @@
         <div class="list_box">
             <ul id="tore_menu">
             </ul>
+            <button id="viewToggleButton">全て表示</button>
         </div>
     </div>
 
