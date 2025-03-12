@@ -1,7 +1,3 @@
-// TODO::タブの処理をJSで切り替え処理をする
-console.log('ファイルの読み込み');
-
-
 // ボタンタップイベントで取得するためのメニュー要素 //
 const all = document.getElementById('all');
 const chest = document.getElementById('chest');
@@ -66,3 +62,23 @@ function displayMenu(menu) {
         menuList.appendChild(newlistTag);
     });
 }
+
+// ページが読み込まれた後に実行 //
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/Home/firstMenu', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ user_id: 1 })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success', data);
+            displayMenu(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+});
