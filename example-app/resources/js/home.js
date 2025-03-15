@@ -5,7 +5,6 @@ const shoulder = document.getElementById('shoulder');
 const arm = document.getElementById('arm');
 const back = document.getElementById('back');
 const leg = document.getElementById('leg');
-const viewToggleButton = document.getElementById('viewToggleButton');
 
 // ボタンがタップされた時部位ごとのメニューを表示させる //
 all.addEventListener('click', () => {
@@ -30,11 +29,6 @@ back.addEventListener('click', () => {
 
 leg.addEventListener('click', () => {
     searchMenu('脚');
-});
-
-viewToggleButton.addEventListener('click', () => {
-    console.log("タップされました");
-    //TODO::表示数の変更をするイベント処理を記述する
 });
 
 // 該当メニューの検索と抽出 //
