@@ -2,33 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 body {
-    background-color: 383333;
+    background-color: #383333;
 }
 
-.menu-box {
+.menu_box {
     background-color: #FF8228;
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 19px;
+    /* padding: 10px; */
+    border-radius: 10px;
+    max-width: 366px;
+    margin: 0 auto;
 }
 
-.list {
-    background-color: #FFFFFF;
-    margin: 10px 0 10px 0;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border: 2px solid #DCDCDC;
+.label {
+    display: flex;
+    justify-content: space-around;
+    background-color: #FF8228;
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
 }
 
-.menu-box .weight,
-.menu-box .rep {
+.label input[type="radio"] {
+    display: none;
+}
+
+.label label {
+    flex: 1;
     text-align: center;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.label label+label {
+    border-left: 1px solid white;
+}
+
+.list_box {
+    background-color: #FFFFFF;
+    border: 2px solid #DCDCDC;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+.label .tab_label_right {
+    border-right: 1px solid white;
+}
+
+#tore_menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#tore_menu li {
+    padding: 15px;
+    border-bottom: 1px solid #DCDCDC;
+    text-align: center;
+    font-size: 18px;
+}
+
+#viewToggleButton {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #DCDCDC;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+#tore_menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 232px;
+    overflow-y: auto;
 }
