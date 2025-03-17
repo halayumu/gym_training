@@ -12,4 +12,6 @@ Route::post('/TrainingDetail', [TrainingDetailController::class, 'index']); //�
 Route::post('/TrainingMenuAdd', [TrainingDetailController::class, 'create']); //トレーニングメニュー登録
 Route::get('/Home', [TrainingDetailController::class, 'Home']); //ホーム画面
 Route::post('/Home/firstMenu', [TrainingDetailController::class, 'firstMenu']); //ホーム画面のファーストメニュー
-Route::post('/Home/search', [TrainingDetailController::class, 'searchMenu']);//メニュー検索
+Route::post('/Home/search', [TrainingDetailController::class, 'searchMenu']); //メニュー検索
+Route::get('/AddTraining', [TrainingDetailController::class, 'addViewMenu']); //トレーニング追加画面
+Route::post('/AddTraining', [TrainingDetailController::class, 'menuRegistration']); //トレーニング追加
