@@ -74,4 +74,42 @@ class TrainingDetailController extends Controller
 
         return response()->json(['eventNameJson' => $menuGet], 200, [], JSON_UNESCAPED_UNICODE);
     }
+
+    /**
+     * トレーニング追加に関しての選択メニューを表示させる
+     */
+    public function addViewMenu()
+    {
+        $menuPart = $this->menuPart();
+        $menuDay = $this->menuDay();
+
+        return view('AddTraining', compact('menuPart', 'menuDay'));
+    }
+
+    /**
+     * トレーニング情報を表示する
+     */
+    public function menuPart()
+    {
+        $part = ['胸', '肩', '腕', '背中', '脚'];
+        return $part;
+    }
+
+    /**
+     * トレーニング曜日を表示させる
+     */
+    public function menuDay()
+    {
+        $day = ['月', '火', '水', '木', '金', '土', '日'];
+        return $day;
+    }
+
+    /**
+     * 新規でトレーニングメニューを登録する
+     */
+    public function menuRegistration(Request $request)
+    {
+        $trainingDetail = new TrainingDetail();
+        $result = $trainingDetail->addtoreMenu($request->part, $request->trainingExerciseName, $request->weekday);
+    }
 }
