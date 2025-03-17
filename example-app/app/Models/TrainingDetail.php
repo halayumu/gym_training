@@ -105,4 +105,19 @@ class TrainingDetail extends Model
 
         return $menu;
     }
+
+    /**
+     * 新規でトレーニングメニューを登録する
+     */
+    public function addtoreMenu($part, $trainingExerciseName, $weekday)
+    {
+        $userId = 1; //テストデータ
+
+        $result = DB::table('new_menu')->insert([
+            'part' => $part,
+            'trainingExerciseName' => $trainingExerciseName,
+            'weekday' => $weekday,
+            'user_id' => $userId,
+        ]);
+    }
 }
