@@ -111,5 +111,6 @@ class TrainingDetailController extends Controller
     {
         $trainingDetail = new TrainingDetail();
         $result = $trainingDetail->addtoreMenu($request->part, $request->trainingExerciseName, $request->weekday);
+        return $result;
     }
 }

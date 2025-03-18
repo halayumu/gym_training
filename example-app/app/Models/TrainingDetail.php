@@ -119,5 +119,11 @@ class TrainingDetail extends Model
             'weekday' => $weekday,
             'user_id' => $userId,
         ]);
+
+        if ($result) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }
