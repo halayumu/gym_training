@@ -109,8 +109,13 @@ class TrainingDetailController extends Controller
      */
     public function menuRegistration(Request $request)
     {
+        $part = $request->input("addMenu.part");
+        $trainingExerciseName = $request->input("addMenu.trainingExerciseName");
+        $weekday = $request->input("addMenu.weekday");
+
         $trainingDetail = new TrainingDetail();
-        $result = $trainingDetail->addtoreMenu($request->part, $request->trainingExerciseName, $request->weekday);
-        return $result;
+        $result = $trainingDetail->addtoreMenu($part, $trainingExerciseName, $weekday);
+
+        return response()->json(['addTreResultJson' => $result], 200, [], JSON_UNESCAPED_UNICODE);
     }
 }
