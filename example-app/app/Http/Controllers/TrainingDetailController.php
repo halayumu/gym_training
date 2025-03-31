@@ -8,12 +8,9 @@ use Illuminate\Http\Request;
 class TrainingDetailController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    /**
      * フォームの入力情報を取得する
      */
-    public function index(Request $request)
+    public function record(Request $request)
     {
         $weight = $request->input('weight') ?? "";
         $rep = $request->input('rep') ?? "";

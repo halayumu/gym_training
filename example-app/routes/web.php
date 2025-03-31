@@ -7,8 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/TrainingInput', [TrainingDetailController::class, 'index']); //入力画面
-Route::post('/TrainingDetail', [TrainingDetailController::class, 'index']); //詳細画面
+Route::get('/TrainingInput', [TrainingDetailController::class, 'record']); //入力画面
+Route::post('/TrainingDetail', [TrainingDetailController::class, 'record']); //詳細画面
 Route::post('/TrainingMenuAdd', [TrainingDetailController::class, 'create']); //トレーニングメニュー登録
 Route::get('/Home', [TrainingDetailController::class, 'Home']); //ホーム画面
 Route::post('/Home/firstMenu', [TrainingDetailController::class, 'firstMenu']); //ホーム画面のファーストメニュー
