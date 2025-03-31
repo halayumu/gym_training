@@ -67,7 +67,7 @@ function displayMenu(menu) {
         const url = document.createElement('a');
 
         // トレーニング内容のURLパラメータを作成
-        url.href = `/AddTraining?id=${item.id}&name=${item.trainingExerciseName}&userId=${item.userId}&part=${item.part}&day=${item.day}`;
+        url.href = `/TrainingInput?id=${item.id}&name=${item.trainingExerciseName}&userId=${item.userId}&part=${item.part}&day=${item.day}`;
         url.textContent = item.trainingExerciseName
 
         newlistTag.appendChild(url);
