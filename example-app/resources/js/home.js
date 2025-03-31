@@ -9,6 +9,7 @@ const leg = document.getElementById('leg');
 // ボタンがタップされた時部位ごとのメニューを表示させる //
 all.addEventListener('click', () => {
     searchMenu('all');
+    changeTabColor(all);
 });
 
 chest.addEventListener('click', () => {
@@ -31,6 +32,11 @@ leg.addEventListener('click', () => {
     searchMenu('脚');
 });
 
+// タブがタップされた時の色を変える //
+function changeTabColor(tab) {
+    // TODO::タブの色を変える処理を記述する
+}
+
 // 該当メニューの検索と抽出 //
 function searchMenu(TrainingEventName) {
     fetch('/Home/search', {
@@ -51,14 +57,20 @@ function searchMenu(TrainingEventName) {
         });
 }
 
-// jsonデータをliとして表示させる //
+// メニューを表示させる処理 //
 function displayMenu(menu) {
     const menuList = document.getElementById('tore_menu');
-    menuList.innerHTML = ''; // 既存のリストをクリア
+    menuList.innerHTML = '';
 
     menu.eventNameJson.forEach(item => {
         const newlistTag = document.createElement('li');
-        newlistTag.textContent = item.trainingExerciseName;
+        const url = document.createElement('a');
+
+        // トレーニング内容のURLパラメータを作成
+        url.href = `/AddTraining?id=${item.id}&name=${item.trainingExerciseName}&userId=${item.userId}&part=${item.part}&day=${item.day}`;
+        url.textContent = item.trainingExerciseName
+
+        newlistTag.appendChild(url);
         menuList.appendChild(newlistTag);
     });
 }
