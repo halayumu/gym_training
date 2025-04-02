@@ -4,11 +4,17 @@ const cloneIn = document.getElementById('clone_in');
 let count = 0;
 const maxCount = 5;
 
+//セット数の記録メモを増やす //
 todoAdd.addEventListener('click', (event) => {
     event.preventDefault();
+    count++;
 
-    const todoBox = document.getElementById('todo_box');
-    const cloneTodoBox = todoBox.cloneNode(true);
+    if (count < maxCount) {
+        const todoBox = document.getElementById('todo_box');
+        const cloneTodoBox = todoBox.cloneNode(true);
 
-    cloneIn.appendChild(cloneTodoBox);
+        cloneIn.appendChild(cloneTodoBox);
+    } else {
+        todoAdd.disabled = true;
+    }
 });
