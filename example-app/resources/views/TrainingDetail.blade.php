@@ -5,7 +5,7 @@
     <div id="todo_box">
         <div class="set_box">
             <span>セット</span>
-            <p id="set"></p>
+            <p id="set">1</p>
         </div>
 
         <div class="box">
@@ -53,14 +53,14 @@
             </div>
         </div>
         
-        <button type="submit">送信</button>
-        <button id="todo_add">+</button>
-    </div>
-
-    <div id="clone_in">
 
     </div>
 </form>
+<div id="clone_in">
+</div>
 
+
+<button id="todo_add">+</button>
+<button type="submit">送信</button>
 
 @vite('resources/js/TrainingDetail.js')
