@@ -1,6 +1,6 @@
 
-<form action="/TrainingDetail" method="post">
-    @csrf
+{{-- <form action="/TrainingDetail" method="post">
+    @csrf --}}
 
     <div id="todo_box">
         <div class="set_box">
@@ -55,12 +55,12 @@
         
 
     </div>
-</form>
+{{-- </form> --}}
 <div id="clone_in">
 </div>
 
 
 <button id="todo_add">+</button>
-<button type="submit">送信</button>
+<button id="submit">送信</button>
 
 @vite('resources/js/TrainingDetail.js')

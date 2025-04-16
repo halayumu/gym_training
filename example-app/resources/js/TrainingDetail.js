@@ -1,4 +1,5 @@
 const todoAdd = document.getElementById('todo_add');
+const submit = document.getElementById('submit');
 const cloneIn = document.getElementById('clone_in');
 
 let count = 0;
@@ -21,4 +22,20 @@ todoAdd.addEventListener('click', (event) => {
     } else {
         todoAdd.disabled = true;
     }
+});
+
+// トレーニング記録ように入力値を取得しfechAPIで渡す用に加工する //
+submit.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    const todoArray = [];
+
+    const todoBox = document.getElementById('todo_box');
+    const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"], select');
+    todoBoxInput.forEach(input => {
+        todoArray.push({
+            [input.name]: input.value
+        });
+    });
+    console.log(todoArray);
 });
