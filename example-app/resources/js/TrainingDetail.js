@@ -28,14 +28,28 @@ todoAdd.addEventListener('click', (event) => {
 submit.addEventListener('click', (event) => {
     event.preventDefault();
 
+    // fechAPIでtodo_ boxと名のついたボックスの入力値をまとめて渡すための配列
     const todoArray = [];
+    const boxArray = [];
 
+    // TODO::セット1は保存できていないから配列に入れる
     const todoBox = document.getElementById('todo_box');
     const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"], select');
-    todoBoxInput.forEach(input => {
-        todoArray.push({
-            [input.name]: input.value
+
+    // コピーしたセットブロックを取得する
+    const cloneTodoBoxs = document.getElementById('clone_in');
+    const todoBoxes = cloneTodoBoxs.querySelectorAll('[id^="todo_box"]');
+
+    // fetchAPIでまとめて渡すために配列に追加したセット数をまとめる
+    todoBoxes.forEach(box => {
+
+        const inputs = box.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
+        inputs.forEach(input => {
+            boxArray.push({
+                [input.name]: input.value
+            });
         });
+
+        todoArray.push(boxArray);
     });
-    console.log(todoArray);
 });
