@@ -115,4 +115,15 @@ class TrainingDetailController extends Controller
 
         return response()->json(['addTreResultJson' => $result], 200, [], JSON_UNESCAPED_UNICODE);
     }
+
+    /**
+    //  * トレーニング記録を登録する
+     */
+    public function trainingRecord(Request $request)
+    {
+        $tore = $request->all();
+
+        return response()->json($tore);
+        // dd($tore);
+    }
 }
