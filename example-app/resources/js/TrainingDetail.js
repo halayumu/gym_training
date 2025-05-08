@@ -28,28 +28,55 @@ todoAdd.addEventListener('click', (event) => {
 submit.addEventListener('click', (event) => {
     event.preventDefault();
 
-    // fechAPIでtodo_ boxと名のついたボックスの入力値をまとめて渡すための配列
+    console.log("送信ボタンが押されました");
+
+    // 大きな配列の箱
     const todoArray = [];
-    const boxArray = [];
 
-    // TODO::セット1は保存できていないから配列に入れる
+    // 元のtodo_boxの入力値を取得して配列にまとめる
     const todoBox = document.getElementById('todo_box');
-    const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"], select');
+    const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
+    const mainBoxArray = [];
 
-    // コピーしたセットブロックを取得する
+    todoBoxInput.forEach(input => {
+        mainBoxArray.push({
+            [input.name]: input.value
+        });
+    });
+
+    // 大きな配列に元のtodo_boxのデータを追加
+    todoArray.push(mainBoxArray);
+
+    // クローンしたセットブロックを取得する
     const cloneTodoBoxs = document.getElementById('clone_in');
     const todoBoxes = cloneTodoBoxs.querySelectorAll('[id^="todo_box"]');
 
-    // fetchAPIでまとめて渡すために配列に追加したセット数をまとめる
+    // クローンした各todo_boxのデータを配列にまとめる
     todoBoxes.forEach(box => {
-
+        const boxArray = [];
         const inputs = box.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
+
         inputs.forEach(input => {
             boxArray.push({
                 [input.name]: input.value
             });
         });
 
+        // 大きな配列にクローンしたtodo_boxのデータを追加
         todoArray.push(boxArray);
     });
+
+    // トレーニング記録を送信する
+    fetch('/TrainingDetail', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ todoArray: todoArray })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success', data);
+        })
 });
