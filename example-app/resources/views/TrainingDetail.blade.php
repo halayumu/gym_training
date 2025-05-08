@@ -1,6 +1,6 @@
-
-{{-- <form action="/TrainingDetail" method="post">
-    @csrf --}}
+<head>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
 
     <div id="todo_box">
         <div class="set_box">
