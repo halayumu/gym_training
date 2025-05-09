@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class TrainingDetail extends Model
 {
@@ -121,9 +122,17 @@ class TrainingDetail extends Model
         ]);
 
         if ($result) {
-            return 0;
+            return true;
         } else {
-            return 1;
+            return false;
         }
+    }
+
+    /**
+     * トレーニング記録を登録する
+     */
+    public function trainingRecordDb($tore)
+    {
+        Log::info('Received data:', $tore);
     }
 }

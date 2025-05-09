@@ -123,7 +123,9 @@ class TrainingDetailController extends Controller
     {
         $tore = $request->all();
 
+        $trainingDetail = new TrainingDetail();
+        $trainingDetail->trainingRecordDb($tore);
+
         return response()->json($tore);
-        // dd($tore);
     }
 }
