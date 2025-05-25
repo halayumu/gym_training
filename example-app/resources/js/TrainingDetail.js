@@ -36,16 +36,11 @@ submit.addEventListener('click', (event) => {
     // 元のtodo_boxの入力値を取得して配列にまとめる
     const todoBox = document.getElementById('todo_box');
     const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
-    const mainBoxArray = [];
-
+    const mainBoxObj = {};
     todoBoxInput.forEach(input => {
-        mainBoxArray.push({
-            [input.name]: input.value
-        });
+        mainBoxObj[input.name] = input.value;
     });
-
-    // 大きな配列に元のtodo_boxのデータを追加
-    todoArray.push(mainBoxArray);
+    todoArray.push(mainBoxObj);
 
     // クローンしたセットブロックを取得する
     const cloneTodoBoxs = document.getElementById('clone_in');
@@ -53,17 +48,12 @@ submit.addEventListener('click', (event) => {
 
     // クローンした各todo_boxのデータを配列にまとめる
     todoBoxes.forEach(box => {
-        const boxArray = [];
+        const boxObj = {};
         const inputs = box.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
-
         inputs.forEach(input => {
-            boxArray.push({
-                [input.name]: input.value
-            });
+            boxObj[input.name] = input.value;
         });
-
-        // 大きな配列にクローンしたtodo_boxのデータを追加
-        todoArray.push(boxArray);
+        todoArray.push(boxObj);
     });
 
     // トレーニング記録を送信する
