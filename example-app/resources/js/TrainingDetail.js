@@ -28,8 +28,6 @@ todoAdd.addEventListener('click', (event) => {
 submit.addEventListener('click', (event) => {
     event.preventDefault();
 
-    console.log("送信ボタンが押されました");
-
     // URLパラメータから値を取得
     const urlParams = new URLSearchParams(window.location.search);
     const user_id = urlParams.get('id');
