@@ -5,7 +5,7 @@ const cloneIn = document.getElementById('clone_in');
 let count = 0;
 const maxCount = 5;
 
-//セット数の記録メモを増やす //
+//- セット数の記録メモを増やす -//
 todoAdd.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -24,19 +24,27 @@ todoAdd.addEventListener('click', (event) => {
     }
 });
 
-// トレーニング記録ように入力値を取得しfechAPIで渡す用に加工する //
+//- トレーニング記録ように入力値を取得しfechAPIで渡す用に加工する -//
 submit.addEventListener('click', (event) => {
     event.preventDefault();
 
     console.log("送信ボタンが押されました");
 
-    // 大きな配列の箱
+    // URLパラメータから値を取得
+    const urlParams = new URLSearchParams(window.location.search);
+    const user_id = urlParams.get('id');
+    const part = urlParams.get('part'); //部位
+    const exercise_name = urlParams.get('name'); //種目名
+    const day = urlParams.get('day'); // 日付（必要なら）
+
+    // 各セットの入力値をまとめるもの
     const todoArray = [];
 
     // 元のtodo_boxの入力値を取得して配列にまとめる
     const todoBox = document.getElementById('todo_box');
     const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
     const mainBoxObj = {};
+
     todoBoxInput.forEach(input => {
         mainBoxObj[input.name] = input.value;
     });
@@ -56,6 +64,14 @@ submit.addEventListener('click', (event) => {
         todoArray.push(boxObj);
     });
 
+    // 最上位にURLパラメータを追加してAPI再構築する
+    const requestData = {
+        user_id: user_id,
+        exercise_name: exercise_name,
+        part: part,
+        todoArray: todoArray
+    };
+
     // トレーニング記録を送信する
     fetch('/TrainingDetail', {
             method: 'POST',
@@ -63,7 +79,7 @@ submit.addEventListener('click', (event) => {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
             },
-            body: JSON.stringify({ todoArray: todoArray })
+            body: JSON.stringify(requestData)
         })
         .then(response => response.json())
         .then(data => {
