@@ -133,6 +133,28 @@ class TrainingDetail extends Model
      */
     public function trainingRecordDb($tore)
     {
-        Log::info('Received data:', $tore);
+        // APIの最上位に位置する配列(URLパラメータからの値)
+        $userId = $tore["user_id"];
+        $exerciseName = $tore["exercise_name"];
+        $part = $tore["part"];
+
+        foreach ($tore["todoArray"] as $toreAdd) {
+            DB::table('menu')->insert([
+                'user_id' => $userId,
+                'trainingExerciseName' => $exerciseName,
+                'set' => $toreAdd['setNo'],
+                'part' => $part,
+                'weight' => $toreAdd['weight'],
+                'rep' => $toreAdd['rep'],
+                'chairHeight' => $toreAdd['chair_height'],
+                'supportHeight' => $toreAdd['chair_backrest'],
+                'memo' => $toreAdd['memo'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
+        // Log::info('Received data:', $tore);
+        // ここでログを出力
+        // Log::info('trainingRecordDb: メニュー登録が完了しました', ['count' => count($tore)]);
     }
 }
