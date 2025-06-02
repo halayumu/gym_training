@@ -5,7 +5,9 @@ const cloneIn = document.getElementById('clone_in');
 let count = 0;
 const maxCount = 5;
 
+////////////////////////////
 //- セット数の記録メモを増やす -//
+///////////////////////////
 todoAdd.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -24,7 +26,9 @@ todoAdd.addEventListener('click', (event) => {
     }
 });
 
+////////////////////////////////////////////////////////
 //- トレーニング記録ように入力値を取得しfechAPIで渡す用に加工する -//
+////////////////////////////////////////////////////////
 submit.addEventListener('click', (event) => {
     event.preventDefault();
 
@@ -33,19 +37,25 @@ submit.addEventListener('click', (event) => {
     const user_id = urlParams.get('id');
     const part = urlParams.get('part'); //部位
     const exercise_name = urlParams.get('name'); //種目名
-    const day = urlParams.get('day'); // 日付（必要なら）
 
     // 各セットの入力値をまとめるもの
     const todoArray = [];
 
     // 元のtodo_boxの入力値を取得して配列にまとめる
     const todoBox = document.getElementById('todo_box');
+    const setNo = todoBox.querySelector('#set').textContent;
     const todoBoxInput = todoBox.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
     const mainBoxObj = {};
 
+    // 1セット目にsetNoを追加する
+    mainBoxObj['setNo'] = setNo;
+
+    // 1セット目を連想配列として作成する。
     todoBoxInput.forEach(input => {
         mainBoxObj[input.name] = input.value;
     });
+
+    // 1セット目のみを追加(1セットのみだけを登録する可能性があるため)
     todoArray.push(mainBoxObj);
 
     // クローンしたセットブロックを取得する
@@ -56,9 +66,16 @@ submit.addEventListener('click', (event) => {
     todoBoxes.forEach(box => {
         const boxObj = {};
         const inputs = box.querySelectorAll('input[type="text"], input[type="radio"]:checked, select');
+        const setNo = box.querySelector('#set').textContent;
+
+        // コピーのセット番号を追加
+        boxObj['setNo'] = setNo;
+
         inputs.forEach(input => {
             boxObj[input.name] = input.value;
         });
+
+        // 2セット名以降を追加
         todoArray.push(boxObj);
     });
 
@@ -70,7 +87,7 @@ submit.addEventListener('click', (event) => {
         todoArray: todoArray
     };
 
-    // トレーニング記録を送信する
+    // トレーニングのセットを記録するためDBに保存するため送信
     fetch('/TrainingDetail', {
             method: 'POST',
             headers: {
