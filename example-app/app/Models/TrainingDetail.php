@@ -139,7 +139,7 @@ class TrainingDetail extends Model
         $part = $tore["part"];
 
         foreach ($tore["todoArray"] as $toreAdd) {
-            DB::table('menu')->insert([
+            $allSucceeded = DB::table('menu')->insert([
                 'user_id' => $userId,
                 'trainingExerciseName' => $exerciseName,
                 'set' => $toreAdd['setNo'],
@@ -153,8 +153,7 @@ class TrainingDetail extends Model
                 'updated_at' => now(),
             ]);
         }
-        // Log::info('Received data:', $tore);
-        // ここでログを出力
-        // Log::info('trainingRecordDb: メニュー登録が完了しました', ['count' => count($tore)]);
+
+        return $allSucceeded;
     }
 }
