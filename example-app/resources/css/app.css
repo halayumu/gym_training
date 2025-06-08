@@ -82,3 +82,30 @@ body {
     max-height: 232px;
     overflow-y: auto;
 }
+
+.circle_button {
+    width: 100px;
+    /* ボタンの幅 */
+    height: 100px;
+    /* ボタンの高さ */
+    background-color: #FF8228;
+    /* ボタンの背景色 */
+    border-radius: 50%;
+    /* 円形にする */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    /* 必要に応じて位置を調整 */
+    margin: 0 auto;
+    /* 中央に配置 */
+}
+
+.circle_button span {
+    color: white;
+    /* プラス記号の色 */
+    font-size: 40px;
+    /* プラス記号のサイズ */
+    font-weight: bold;
+}

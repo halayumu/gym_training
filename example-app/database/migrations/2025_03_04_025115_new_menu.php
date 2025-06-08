@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('part');
             $table->boolean('is_deleted')->default(0); // 削除フラグ（論理削除: 1=削除, 0=有効）
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // 外部キー制約（usersテーブルのidに関連付ける）
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade'); // 外部キー制約（usersテーブルのidに関連付ける）
             $table->timestamps(); // created_at, updated_at 自動追加
         });
     }
