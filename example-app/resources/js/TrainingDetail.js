@@ -99,5 +99,17 @@ submit.addEventListener('click', (event) => {
         .then(response => response.json())
         .then(data => {
             console.log('Success', data);
+            tapChangeHome(data);
         })
 });
+
+///////////////////////////////
+//- 登録が完了後のお知らせアラート -//
+//////////////////////////////
+function tapChangeHome(bool) {
+    const okBool = alert('登録が完了しました。');
+
+    if (!okBool) {
+        window.location.href = '/Home';
+    }
+}

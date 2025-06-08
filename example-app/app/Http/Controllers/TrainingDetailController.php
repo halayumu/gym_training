@@ -117,15 +117,15 @@ class TrainingDetailController extends Controller
     }
 
     /**
-    //  * トレーニング記録を登録する
+     *  トレーニング記録を登録する
      */
     public function trainingRecord(Request $request)
     {
         $tore = $request->all();
 
         $trainingDetail = new TrainingDetail();
-        $trainingDetail->trainingRecordDb($tore);
+        $allSucceeded = $trainingDetail->trainingRecordDb($tore);
 
-        return response()->json($tore);
+        return response()->json($allSucceeded);
     }
 }
