@@ -36,6 +36,7 @@
     <div class="circle_button">
         <span>+</span>
     </div>
-
+    
+    @include('BottomNav')
     @vite('resources/js/home.js')
 </body>
