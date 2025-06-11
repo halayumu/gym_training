@@ -6,11 +6,12 @@ body {
 }
 
 .menu_box {
-    background-color: #FF8228;
-    /* padding: 10px; */
     border-radius: 10px;
-    max-width: 366px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 25px;
     margin: 0 auto;
+    margin: 10% 0 90% 0;
 }
 
 .label {
@@ -85,27 +86,19 @@ body {
 
 .circle_button {
     width: 100px;
-    /* ボタンの幅 */
     height: 100px;
-    /* ボタンの高さ */
     background-color: #FF8228;
-    /* ボタンの背景色 */
     border-radius: 50%;
-    /* 円形にする */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     position: relative;
-    /* 必要に応じて位置を調整 */
     margin: 0 auto;
-    /* 中央に配置 */
 }
 
 .circle_button span {
     color: white;
-    /* プラス記号の色 */
     font-size: 40px;
-    /* プラス記号のサイズ */
     font-weight: bold;
 }

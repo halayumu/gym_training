@@ -1,10 +1,13 @@
 @vite('resources/css/app.css')
+@vite('resources/css/nav.css')
+@vite('resources/css/header.css')
 
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
+    @include('header')
     <div class="menu_box">
 
         <div class="label">
@@ -36,7 +39,7 @@
     <div class="circle_button">
         <span>+</span>
     </div>
-    
+
     @include('BottomNav')
     @vite('resources/js/home.js')
 </body>
