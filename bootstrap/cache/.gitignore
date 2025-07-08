@@ -1,0 +1,37 @@
+*
+!.gitignore
+
+# 依存関係（Composer・Node.js）
+/vendor/
+/node_modules/
+/composer.lock
+/package-lock.json
+
+# キャッシュ・ログ・セッション
+/bootstrap/cache/
+/storage/logs/
+/storage/framework/cache/
+/storage/framework/sessions/
+/storage/framework/views/
+
+# テスト関連
+/phpunit.xml
+/phpunit.xml.dist
+
+# Docker関連
+/docker-compose.override.yml
+
+# フロントエンドビルド関連
+/public/hot
+/public/storage
+/public/mix-manifest.json
+/public/build/
+/resources/js/.output/
+/resources/js/.vite/
+
+# IDE設定ファイル
+/.vscode/
+/.idea/
+
+# Macの隠しファイル
+.DS_Store
