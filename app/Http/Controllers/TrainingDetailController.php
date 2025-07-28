@@ -31,6 +31,14 @@ class TrainingDetailController extends Controller
     }
 
     /**
+     * top画面
+     */
+    public function top()
+    {
+        return view('top');
+    }
+
+    /**
      * ホーム画面
      */
     public function home()

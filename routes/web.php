@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
+Route::get('/', [TrainingDetailController::class, 'top']); //top画面
 Route::get('/TrainingInput', [TrainingDetailController::class, 'record']); //入力画面
 Route::post('/TrainingDetail', [TrainingDetailController::class, 'record']); //詳細画面
 Route::post('/TrainingMenuAdd', [TrainingDetailController::class, 'create']); //トレーニングメニュー登録
