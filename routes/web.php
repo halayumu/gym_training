@@ -4,9 +4,6 @@ use App\Http\Controllers\TrainingDetailController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,9 +15,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/', [TrainingDetailController::class, 'top']); //top画面
 Route::get('/TrainingInput', [TrainingDetailController::class, 'record']); //入力画面
 Route::post('/TrainingDetail', [TrainingDetailController::class, 'record']); //詳細画面
@@ -31,10 +26,6 @@ Route::post('/Home/search', [TrainingDetailController::class, 'searchMenu']); //
 Route::get('/AddTraining', [TrainingDetailController::class, 'addViewMenu']); //トレーニング追加画面
 Route::post('/AddTraining', [TrainingDetailController::class, 'menuRegistration']); //トレーニング追加
 Route::post('/TrainingDetail', [TrainingDetailController::class, 'trainingRecord']); //トレーニング記録
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 
 require __DIR__ . '/auth.php';
