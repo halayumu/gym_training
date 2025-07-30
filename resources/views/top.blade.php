@@ -1,4 +1,10 @@
+@vite(['resources/css/top.css'])
+
 <div>
+
+    <img src="{{ asset('images/log.png') }}" alt="WORKOUT">
+
+    <h1>WORKOUT</h1>
 
 <div class="btn-size">
     <a href="{{ route('login') }}">ログイン</a>
